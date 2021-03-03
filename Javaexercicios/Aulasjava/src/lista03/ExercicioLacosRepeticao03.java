@@ -10,7 +10,7 @@ public class ExercicioLacosRepeticao03 {
 	 while (idade != PARAR) {
 	 System.out.print("Digite a idade: ");
 	 idade = ler.nextInt();
-	 if (idade < 21 && idade >= 0 ) {
+	 if (idade < 21 && idade >= PARAR ) {
 		 idadeMenor21 = idadeMenor21 + 1;
 	 }
 	 else if(idade > 50) {

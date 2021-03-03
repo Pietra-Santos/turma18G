@@ -14,8 +14,7 @@ public class ExercicioLacosRepeticao02{
         if(n1%2==0) {
             //System.out.print("numero par");
             par++; 
-        }
-        else {
+        }else {
             //System.out.print("numero impar");
             impar++;
         }

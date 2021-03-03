@@ -10,17 +10,15 @@ public class FuncoesNumero {
 		System.out.println("Digite um numero");
 		numero = ler.nextInt();
 	
-		while(numero>= 0);
-		{
-		if (numero<maiorNumero);
-		{
-			maiorNumero = numero;
-		}
-	   System.out.println("Digite mais um número");
-	   numero = ler.nextInt();
+		while(numero>= 0) {
+			if (numero<maiorNumero) {
+				maiorNumero = numero;
+		    }
+		   System.out.println("Digite mais um número");
+		   numero = ler.nextInt();
 		
 		}
-		System.out.println("O maior numero digitado é: "+maiorNumero++);
+		System.out.println("O maior numero digitado é: "+maiorNumero);
 		 numero = ler.nextInt();
 	}		
 }
