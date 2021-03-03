@@ -15,6 +15,4 @@ public class ProdutoEletronico03 {
 	void mostrarProduto() {
 		System.out.println("O produto é "+this.nomeProduto+", a marca do produto é "+this.marca+" e o seu preco é "+this.preco);
 	}
-
-
 }

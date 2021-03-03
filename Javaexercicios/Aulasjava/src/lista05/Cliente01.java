@@ -20,6 +20,5 @@ public class Cliente01 {
     public void mostrarCliente () {
     
 	    System.out.printf(" O Seu nome é %s,sua idade %d anos e o cpf: %s ", nomeCompleto,idade,cpf);
-    	
     }
 }
