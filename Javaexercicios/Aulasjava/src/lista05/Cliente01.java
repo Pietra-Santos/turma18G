@@ -17,9 +17,9 @@ public class Cliente01 {
     public int idade;
     public String cpf;
     
-    public void  cliente (String nome,int idade, String cpf) {
+    public void mostrarCliente () {
     
-    System.out.printf(" O Seu nome é %s,sua idade %d anos e o cpf: %s",nome,idade,cpf);
+	    System.out.printf(" O Seu nome é %s,sua idade %d anos e o cpf: %s ", nomeCompleto,idade,cpf);
     	
     }
 }

@@ -6,11 +6,11 @@ public class ExercicioAviao02 {
 		 
 		Aviao02 aviao =new Aviao02();
 
-	        aviao.Assentos="120";
-	        aviao.Portas="8";
-	        aviao.Janelas="60";
+	        aviao.assentos="120";
+	        aviao.portas="8";
+	        aviao.janelas="60";
 
-	        aviao.aviao();
+	        aviao.mostrarAviao();
 	}
 
 }

@@ -9,11 +9,11 @@ objeto e apresente as informações deste objeto no console.
 */
 public class Aviao02 {
 	
-	public String Assentos;
-    public String Portas;
-    public String Janelas;
+	public String assentos;
+    public String portas;
+    public String janelas;
     
-    void aviao(){
-    System.out.println("Neste aviao, há um numero total de "+this.Assentos +" assentos,"+ this.Portas +" portas e "+this.Janelas+ " janelas ");
+    void mostrarAviao(){
+    	System.out.println("Neste aviao, há um numero total de "+this.assentos +" assentos,"+ this.portas +" portas e "+this.janelas+ " janelas ");
     }
 }
