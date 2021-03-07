@@ -4,7 +4,7 @@ import java.util.Scanner;
 import CLASSES.Conta;
 import CLASSES.ContaPoupanca;
 import CLASSES.ContaCorrente;
-import CLASSES.ContaEspecial;
+//import CLASSES.ContaEspecial; acrescentar
 import CLASSES.ContaEmpresa;
 import CLASSES.ContaEstudantil;
 
@@ -42,14 +42,14 @@ public class Main
 			}
 			else if(opcao == 2)//////////////////////////////////////CONTA/CORRENTE///////////////////////////////////////////
 			{
-				//conta = new ContaCorrente();
+				conta = new ContaCorrente();
 				variedade = "CORRENTE";
 			}
-			else if(opcao == 3)//////////////////////////////////////CONTA/ESPECIAL///////////////////////////////////////////
-			{
-				//conta = new ContaEspecial();
-				variedade = "ESPECIAL";
-			}
+//			else if(opcao == 3)//////////////////////////////////////CONTA/ESPECIAL///////////////////////////////////////////
+//			{
+//				conta = new ContaEspecial();
+//				variedade = "ESPECIAL";
+//			}
 			else if(opcao == 4)//////////////////////////////////////CONTA/EMPRESA////////////////////////////////////////////
 			{
 				conta = new ContaEmpresa();
@@ -57,7 +57,7 @@ public class Main
 			}
 			else if(opcao == 5)//////////////////////////////////////CONTA/ESTUDANTIL/////////////////////////////////////////
 			{
-				//conta = new ContaEstudantil();
+				conta = new ContaEstudantil();
 				variedade = "ESTUDANTIL";
 			}
 			else
@@ -66,24 +66,26 @@ public class Main
 			}
 			do
 			{
+				mov = mov + 1;
 				System.out.println("Banco Edbank");
 				System.out.println("*Slogan*");
 				System.out.println();
 				System.out.println("CONTA "+variedade);
 				System.out.println("Saldo Atual: "+conta.getSaldo());
 				System.out.print("MOVIMENTO : 1-Debito ou 2-Credito: ");
-				valor = s.nextInt();
-				if(acao == 1)
+				acao = s.nextInt();
+				if(acao == 1 || acao == 2)
 				{
-					acao = s.nextInt();
 					System.out.print("Valor do movimento: R$");
-					conta.Debito(valor);
-				}
-				else if(acao == 2)
-				{
-					acao = s.nextInt();
-					System.out.print("Valor do movimento: R$");
-					conta.Credito(valor);
+					valor = s.nextInt();
+					if(acao == 1)
+					{
+						conta.Debito(valor);
+					}
+					else if(acao == 2)
+					{
+						conta.Credito(valor);
+					}
 				}
 				else
 				{
@@ -100,7 +102,7 @@ public class Main
 			while(mov < 10);
 			if(opcao == 2)
 			{
-				//conta.PedirTalao();
+				((ContaCorrente) conta).pedirTalao();
 			}
 		}
 		while(opcao != 6);
