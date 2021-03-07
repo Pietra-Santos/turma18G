@@ -1,7 +1,6 @@
 package CLASSES;
 
 import java.util.Scanner;
-import java.util.Set;
 
 public class ContaPoupanca extends Conta {
 	// Atributos

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ContaEstudantil extends Conta {
 
-	double emprestimoEstudantil = 0;
+	private double emprestimoEstudantil = 0;
 	Scanner ler = new Scanner(System.in);
 
 	public ContaEstudantil() {
@@ -32,12 +32,13 @@ public class ContaEstudantil extends Conta {
 		System.out.println("                [1]Sim [2]Não                  \n");
 		System.out.println("    ========================================== \n");
 		var emp = ler.next().charAt(0);
-		if (emp == 1) 
-		  	{
+		if (emp == 1){
 			System.out.println("");
 			System.out.println("Informe o valor do emprestimo: (" + (5000 - emprestimoEstudantil) + " disponíveis)");
-			}
+		}
+		
 		double novoEmprestimo = ler.nextDouble();
+		
 		System.out.println("========================================================================");
 		if (emprestimoEstudantil + novoEmprestimo <= 5000) {
 			fazerEmprestimo(novoEmprestimo);
@@ -58,10 +59,7 @@ public class ContaEstudantil extends Conta {
 		System.out.println("- Operação          \t\t\t Emprestimo");
 		System.out.println("Emprestimo valor    \t\t\t R$: " + valor);
 		System.out.println("- Saldo Atual       \t\t\t R$: " + saldo);
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		
-		
-		
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");		
 		
 	}
 
