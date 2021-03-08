@@ -4,7 +4,7 @@ import java.util.Scanner;
 import CLASSES.Conta;
 import CLASSES.ContaPoupanca;
 import CLASSES.ContaCorrente;
-//import CLASSES.ContaEspecial; acrescentar
+import CLASSES.ContaEspecial; 
 import CLASSES.ContaEmpresa;
 import CLASSES.ContaEstudantil;
 
@@ -45,11 +45,11 @@ public class Main
 				conta = new ContaCorrente();
 				variedade = "CORRENTE";
 			}
-//			else if(opcao == 3)//////////////////////////////////////CONTA/ESPECIAL///////////////////////////////////////////
-//			{
-//				conta = new ContaEspecial();
-//				variedade = "ESPECIAL";
-//			}
+			else if(opcao == 3)//////////////////////////////////////CONTA/ESPECIAL///////////////////////////////////////////
+			{
+				conta = new ContaEspecial();
+				variedade = "ESPECIAL";
+			}
 			else if(opcao == 4)//////////////////////////////////////CONTA/EMPRESA////////////////////////////////////////////
 			{
 				conta = new ContaEmpresa();
