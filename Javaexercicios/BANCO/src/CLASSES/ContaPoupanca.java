@@ -7,6 +7,7 @@ public class ContaPoupanca extends Conta {
 	Scanner ler = new Scanner(System.in);
 
 	int aniversarioConta = 30;
+	boolean correcao = false;
 
 	// Construtores
 	public ContaPoupanca() 
@@ -45,20 +46,21 @@ public class ContaPoupanca extends Conta {
 	@Override
 	public void Credito(double valor) {
 		//saldo = saldo + valor;
-		Credito(valor);
-		if (saldo > 0) {
-			if (data == aniversarioConta) 
+		super.Credito(valor);
+		if (getSaldo() > 0) {
+			if (data == aniversarioConta && correcao == false)
 			{
+				correcao = true;
 				System.out.println("");
 				System.out.println("\nSua conta acaba de completar mais um mês em nosso banco.");
 				System.out.println("\tHaverá uma correção no seu saldo de +0,05%.\n");
-				saldo = (saldo * 0.05) + saldo;
+				super.Credito((getSaldo() * 0.05));
 				System.out.println("++++++++++++++++++++++++++ Extrato Conta +++++++++++++++++++++");
 				System.out.println("\t\tTransação realizada com sucesso.");
 				System.out.println("- Número da conta   \t\t\t " + numero);
-				System.out.println("- Saldo  Anterior   \t\t\t R$ " + valor);
-				System.out.println("- Operação          \t\t\t Deposito");
-				System.out.println("- Saldo Atual       \t\t\t R$" + saldo);
+				System.out.println("- Movimentação      \t\t\t R$ " + valor);
+				System.out.println("- Operação          \t\t\t Saque");
+				System.out.println("- Saldo Atual       \t\t\t R$" + getSaldo());
 				System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			}
 					
@@ -67,14 +69,14 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public void Debito(double valor) {
-		if (valor <= saldo) {
-			saldo = saldo - valor;
+		if (valor <= getSaldo()) {
+			super.Debito(valor);
 			System.out.println("++++++++++++++++++++++++++ Extrato Conta +++++++++++++++++++++");
 			System.out.println("\t\tTransação realizada com sucesso.");
-			System.out.println("-Número da conta   \t\t\t " + numero);
-			System.out.println("- Saldo  Anterior   \t\t\t R$ " + valor);
+			System.out.println("- Número da conta   \t\t\t " + numero);
+			System.out.println("- Movimentação      \t\t\t R$ " + valor);
 			System.out.println("- Operação          \t\t\t Saque");
-			System.out.println("- Saldo Atual       \t\t\t R$" + saldo);
+			System.out.println("- Saldo Atual       \t\t\t R$" + getSaldo());
 			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		} else {
 			System.out.println("O débito não foi realizado.\n\tValor insuficiente em conta.");

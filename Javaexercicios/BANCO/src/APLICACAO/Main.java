@@ -4,7 +4,7 @@ import java.util.Scanner;
 import CLASSES.Conta;
 import CLASSES.ContaPoupanca;
 import CLASSES.ContaCorrente;
-import CLASSES.ContaEspecial; 
+import CLASSES.ContaEspecial;
 import CLASSES.ContaEmpresa;
 import CLASSES.ContaEstudantil;
 
@@ -24,7 +24,7 @@ public class Main
 		do
 		{
 			System.out.println("Banco Edbank");
-			System.out.println("*Slogan*");
+			System.out.println("Por que VOCÊ Ed mais !");
 			System.out.println();
 			System.out.println("1 - CONTA POUPANÇA");
 			System.out.println("2 - CONTA CORRENTE");
@@ -66,41 +66,51 @@ public class Main
 			}
 			do
 			{
-				mov = mov + 1;
-				System.out.println("Banco Edbank");
-				System.out.println("*Slogan*");
-				System.out.println();
-				System.out.println("CONTA "+variedade);
-				System.out.println("Saldo Atual: "+conta.getSaldo());
-				System.out.print("MOVIMENTO : 1-Debito ou 2-Credito: ");
-				acao = s.nextInt();
-				if(acao == 1 || acao == 2)
+				if(conta.getAtiva() == true)
 				{
-					System.out.print("Valor do movimento: R$");
-					valor = s.nextInt();
-					if(acao == 1)
+					mov = mov + 1;
+					System.out.println("Banco Edbank");
+					System.out.println("Por que VOCÊ Ed mais !");
+					System.out.println();
+					System.out.println("Seja bem vindo !");
+					System.out.println();
+					System.out.println("CONTA "+variedade);
+					System.out.println("Saldo Atual: "+conta.getSaldo());
+					System.out.print("MOVIMENTO : 1-Debito ou 2-Credito: ");
+					acao = s.nextInt();
+					if(acao == 1 || acao == 2)
 					{
-						conta.Debito(valor);
+						System.out.print("Valor do movimento: R$");
+						valor = s.nextInt();
+						if(acao == 1)
+						{
+							conta.Debito(valor);
+						}
+						else if(acao == 2)
+						{
+							conta.Credito(valor);
+						}
 					}
-					else if(acao == 2)
+					else
 					{
-						conta.Credito(valor);
+						System.out.println("Erro, entrada inválida.");
+						mov = mov - 1;
+					}
+					System.out.print("Continuar S/N:");
+					var mais = s.next().toUpperCase().charAt(0);
+					if(mais == 'N')
+					{
+						mov = 10;
 					}
 				}
 				else
 				{
-					System.out.println("Erro, entrada inválida.");
-					mov = mov - 1;
-				}
-				System.out.print("Continuar S/N:");
-				var mais = s.next().toUpperCase().charAt(0);
-				if(mais == 'N')
-				{
+					System.out.println("Conta inativada.");
 					mov = 10;
 				}
 			}
 			while(mov < 10);
-			if(opcao == 2)
+			if(opcao == 2 && conta.getAtiva() == true)
 			{
 				((ContaCorrente) conta).pedirTalao();
 			}

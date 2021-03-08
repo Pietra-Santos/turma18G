@@ -4,7 +4,7 @@ public class Conta
 {
 	protected int numero;
 	protected String cpf;
-	public double saldo = 0;
+	protected double saldo = 0;
 	protected boolean ativa;
 	protected int data;
 

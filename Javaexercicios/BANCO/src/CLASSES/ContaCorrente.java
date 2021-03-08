@@ -3,51 +3,81 @@ package CLASSES;
 import java.util.*;
 
 public class ContaCorrente extends Conta {
-	
+
 	int contadorTalao = 0;
-	Scanner s = new Scanner(System.in);
-	
+	Scanner ler = new Scanner(System.in);
+
 	public ContaCorrente() {
-		System.out.println("Logue na sua conta.");
-		System.out.println("Digite o numero da sua conta:");
-        numero = s.nextInt();
-        System.out.println("Digite o seu CPF: ");
-        cpf = s.next();
-        System.out.println("Essa conta esta ativa?");
-        System.out.println();
-        System.out.println("[1]Ativa[2]Inativa");
-        int a = s.nextInt();
-        if(a == 1) ativa = true;
-        if(a == 2) ativa = false;
-        saldo = 0;
-	}
-	
-	public void pedirTalao() 
-	{
-		System.out.println("Deseja pedir talão de cheque?");
-		System.out.println();
-		System.out.println("[1] Sim | [2] Nao");
-		int r = s.nextInt();	
+		System.out.println("        Painel - Informe os dados da sua conta \n");
+		System.out.println("    ========================================== \n");
+		System.out.println("              Informe o numero da contas");
+		System.out.print("                      (4 digitos):               \n");
+		numero = ler.nextInt();
+		System.out.println("              Informe o numero do CPF:           ");
+		System.out.print("                      (8 digitos):               \n");
+		cpf = ler.next();
+		System.out.println("              Essa conta esta ativa?           \n");
+		System.out.println("              [1]Ativa    [2]Inativa           \n");
+		int a = ler.nextInt();
+		System.out.println("    ========================================== \n");
+		if (a == 1)
+			ativa = true;
+		if (a == 2)
+			ativa = false;
 		
-		if (r == 1) 
-		{
-			if (this.contadorTalao < 3) {
-				System.out.println("Talão solicitado com sucesso. Você ainda tem direito a: " + (this.contadorTalao) + " talão[ões]!");		
-				this.contadorTalao = this.contadorTalao + 1;
+	}
+
+	public void pedirTalao()
+	{
+		System.out.println("          Deseja um talão de cheque ?          \n");
+		System.out.println("                 [1]Sim[2]Não                  \n");
+		System.out.println("    ========================================== \n");
+		int r = ler.nextInt();
+		if (r == 1) {
+			System.out.println("Quantos talões você deseja ?");
+			int q = ler.nextInt();
+			if ((this.contadorTalao + q) <= 3) {
+				this.contadorTalao = this.contadorTalao + q;
+				System.out.println("++++++++++++++++++++++++++ Extrato Conta +++++++++++++++++++++");
+				System.out.println("\t\tTransação realizada com sucesso. ");
+				System.out.println("- Número da conta            " + numero);
+				System.out.println("- Operação          \t\t\t       cheque");
+				System.out.println("- Talões Restantes:          " + (3-this.contadorTalao));
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			} else {
 				System.out.println("Limite de talão excedido!");
 			}
 		}
-		
 	}
 
-	
-//	public int getPedirTalao() {
-//		return PedirTalao;
-//	}
-//
-//	public void setPedirTalao(int pedirTalao) {
-//		this.PedirTalao = pedirTalao;
-//	}
-}
+	@Override
+	public void Credito(double valor) {
+		super.Credito(valor);
 
+		System.out.println("++++++++++++++++++++++++++ Extrato Conta +++++++++++++++++++++");
+		System.out.println("\t\tTransação realizada com sucesso.");
+		System.out.println("- Número da conta   \t\t\t " + numero);
+		System.out.println("- Movimentação      \t\t\t R$ " + valor);
+		System.out.println("- Operação          \t\t\t Saque");
+		System.out.println("- Saldo Atual       \t\t\t R$" + getSaldo());
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+	}
+
+	@Override
+	public void Debito(double valor) {
+		if (valor <= getSaldo()) {
+			super.Debito(valor);
+			System.out.println("++++++++++++++++++++++++++ Extrato Conta +++++++++++++++++++++");
+			System.out.println("\t\tTransação realizada com sucesso.");
+			System.out.println("- Número da conta   \t\t\t " + numero);
+			System.out.println("- Movimentação      \t\t\t R$ " + valor);
+			System.out.println("- Operação          \t\t\t Saque");
+			System.out.println("- Saldo Atual       \t\t\t R$" + getSaldo());
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		} else {
+			System.out.println("O débito não foi realizado.\n\tValor insuficiente em conta.");
+			System.out.println("     ===================================================== ");
+		}
+	}
+}
